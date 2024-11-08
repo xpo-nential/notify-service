@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/xpo-nential/notify-service/configs"
-	"github.com/xpo-nential/notify-service/src"
+	discordbot "github.com/xpo-nential/notify-service/servers/discord-bot"
 )
 
 func main() {
 	configs.Init()
-	src.HandlerDiscord()
+	discordbot.Init()
 }

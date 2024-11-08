@@ -21,7 +21,7 @@ var instance *module
 
 // ModuleInit ทำการสร้างและคืนค่า instance ของ module แบบ singleton
 // เพื่อให้แน่ใจว่ามีการสร้างเพียงหนึ่งครั้งและสามารถใช้ซ้ำได้
-func ModuleInit(ds *discordServer) Imodule {
+func moduleInit(ds *discordServer) Imodule {
 	if instance == nil {
 		instance = &module{
 			discordServer:  ds,

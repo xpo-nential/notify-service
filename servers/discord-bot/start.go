@@ -12,12 +12,17 @@ import (
 	"github.com/xpo-nential/notify-service/servers/discord-bot/commands"
 )
 
+type BotService string
+
 // กำหนดตัวแปร Bot
 var (
 	// GuildID ใช้กำหนดไอดีของเซิร์ฟเวอร์ทดสอบ ถ้าไม่ระบุจะลงทะเบียนคำสั่งแบบ global
 	GuildID = flag.String("guild", "", "Test guild ID. If not passed - bot registers commands globally")
 	// RemoveCommands กำหนดว่าจะลบคำสั่งทั้งหมดหลังจากปิดบอทหรือไม่
 	RemoveCommands = flag.Bool("rmcmd", true, "Remove all commands after shutdowning or not")
+
+	BotDcVannila BotService = `vannila`
+	BotDcRefinn  BotService = `refinn`
 )
 
 // IDiscordServer กำหนด interface ที่มีเมธอด Start สำหรับเริ่มการทำงานของบอท
@@ -32,7 +37,7 @@ type discordServer struct {
 }
 
 // NewConnection สร้างการเชื่อมต่อใหม่กับ Discord โดยใช้ token ที่กำหนด
-func NewConnection() IDiscordServer {
+func newConnection() IDiscordServer {
 	// ดึง token จากการตั้งค่า
 	token := configs.NewConfig(configs.DiscordBot).App().GetToken()
 	// สร้าง session ของ Discord ด้วย token ที่กำหนด
@@ -68,7 +73,7 @@ func (ds *discordServer) Start(handler func(s *discordgo.Session)) {
 	}
 
 	// เริ่มต้นโมดูลและใช้ module สำหรับจัดการคำสั่งต่าง ๆ
-	module := ModuleInit(ds)
+	module := moduleInit(ds)
 
 	// เพิ่ม handler สำหรับเหตุการณ์ InteractionCreate เพื่อจัดการคำสั่งที่ผู้ใช้ส่งมา
 	session.AddHandler(func(s *discordgo.Session, i *discordgo.InteractionCreate) {
@@ -91,7 +96,12 @@ func (ds *discordServer) Start(handler func(s *discordgo.Session)) {
 	}
 
 	// แสดงรายการคำสั่งที่ลงทะเบียนแล้ว
-	cmds, _ := session.ApplicationCommands(session.State.User.ID, *GuildID)
+	cmds, err := session.ApplicationCommands(session.State.User.ID, *GuildID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println("Register Commands")
 	for _, v := range cmds {
 		fmt.Println("cmd:", v.Name)
 	}
@@ -102,6 +112,7 @@ func (ds *discordServer) Start(handler func(s *discordgo.Session)) {
 		if *RemoveCommands {
 			log.Println("Removing commands...")
 			for _, v := range cmds {
+				fmt.Println("cmd:", v.Name)
 				err := session.ApplicationCommandDelete(session.State.User.ID, *GuildID, v.ID)
 				if err != nil {
 					log.Printf("Cannot delete '%v' command: %v", v.Name, err)

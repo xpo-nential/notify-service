@@ -12,17 +12,12 @@ import (
 	"github.com/xpo-nential/notify-service/servers/discord-bot/commands"
 )
 
-type BotService string
-
 // กำหนดตัวแปร Bot
 var (
 	// GuildID ใช้กำหนดไอดีของเซิร์ฟเวอร์ทดสอบ ถ้าไม่ระบุจะลงทะเบียนคำสั่งแบบ global
-	GuildID = flag.String("guild", "", "Test guild ID. If not passed - bot registers commands globally")
+	GuildID = flag.String("guild", "1283372523467309107", "Test guild ID. If not passed - bot registers commands globally")
 	// RemoveCommands กำหนดว่าจะลบคำสั่งทั้งหมดหลังจากปิดบอทหรือไม่
 	RemoveCommands = flag.Bool("rmcmd", true, "Remove all commands after shutdowning or not")
-
-	BotDcVannila BotService = `vannila`
-	BotDcRefinn  BotService = `refinn`
 )
 
 // IDiscordServer กำหนด interface ที่มีเมธอด Start สำหรับเริ่มการทำงานของบอท
@@ -45,6 +40,8 @@ func newConnection() IDiscordServer {
 	if err != nil {
 		log.Fatalf("Error creating Discord session: %v", err)
 	}
+
+	newService(session)
 
 	return &discordServer{
 		session:  session,

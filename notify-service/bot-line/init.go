@@ -1,4 +1,4 @@
-package linebot
+package botline
 
 func Init() {
 	newLineBot()

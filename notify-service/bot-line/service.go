@@ -1,4 +1,4 @@
-package linebot
+package botline
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/line/line-bot-sdk-go/linebot"
 )
 
-func (m botline) Replace(data string, rep map[string]interface{}) string {
+func replace(data string, rep map[string]interface{}) string {
 	for name, value := range rep {
 		val := fmt.Sprintf(`%v`, value)
 		if strings.Contains(name, `avatar`) {
@@ -22,7 +22,7 @@ func (m botline) Replace(data string, rep map[string]interface{}) string {
 	return data
 }
 
-func (b *botline) Message(target string, msg string, alt string) error {
+func (b *botline) BubbleMessage(target string, msg string, alt string) error {
 
 	content := []byte(msg)
 	var err error
@@ -38,6 +38,25 @@ func (b *botline) Message(target string, msg string, alt string) error {
 	}
 
 	message := linebot.NewFlexMessage(alt, container)
+
+	_, err = b.client.PushMessage(target, message).Do()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (b *botline) TextMessage(target string, msg string) error {
+
+	var err error
+
+	// local debug
+	if os.Getenv("APP_HOST") == "127.0.0.1" {
+		target = os.Getenv("LINE_DEBUG_USER")
+	}
+
+	message := linebot.NewTextMessage(msg)
 
 	_, err = b.client.PushMessage(target, message).Do()
 	if err != nil {

@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/xpo-nential/notify-service/configs"
-	discordbot "github.com/xpo-nential/notify-service/servers/discord-bot"
-	linebot "github.com/xpo-nential/notify-service/servers/line-bot"
+	discordbot "github.com/xpo-nential/notify-service/notify-service/bot-discord"
+	linebot "github.com/xpo-nential/notify-service/notify-service/bot-line"
 	"github.com/xpo-nential/notify-service/src"
 )
 

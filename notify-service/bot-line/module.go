@@ -1,4 +1,4 @@
-package linebot
+package botline
 
 import (
 	"log"
@@ -8,14 +8,15 @@ import (
 )
 
 type IBotLine interface {
-	Message(target string, msg string, alt string) error
+	BubbleMessage(target string, msg string, alt string) error
+	TextMessage(target string, msg string) error
 }
 
 type botline struct {
 	client *linebot.Client
 }
 
-var LineBot botline
+var lineBot botline
 
 func newLineBot() {
 	cfg := configs.NewConfig(configs.LineBot).App()
@@ -27,5 +28,5 @@ func newLineBot() {
 	if bot != nil {
 		log.Println(`line bot is connected!`)
 	}
-	LineBot.client = bot
+	lineBot.client = bot
 }

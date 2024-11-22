@@ -1,8 +1,8 @@
-package discordbot
+package botdiscord
 
 import (
 	"github.com/bwmarrin/discordgo"
-	"github.com/xpo-nential/notify-service/servers/discord-bot/handlers"
+	"github.com/xpo-nential/notify-service/notify-service/bot-discord/handlers"
 )
 
 // Imodule กำหนด interface ที่มีเมธอดสำหรับดึงตัวจัดการคำสั่ง (command handlers)

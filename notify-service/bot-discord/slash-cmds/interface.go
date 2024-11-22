@@ -1,8 +1,8 @@
 package slashcmds
 
 import (
-	"github.com/xpo-nential/notify-service/servers/discord-bot/slash-cmds/refinn"
-	"github.com/xpo-nential/notify-service/servers/discord-bot/slash-cmds/vannila"
+	"github.com/xpo-nential/notify-service/notify-service/bot-discord/slash-cmds/refinn"
+	"github.com/xpo-nential/notify-service/notify-service/bot-discord/slash-cmds/vannila"
 )
 
 // ISlashCommands เป็น interface ที่กำหนด method สำหรับจัดการคำสั่งแบบ Slash Commands

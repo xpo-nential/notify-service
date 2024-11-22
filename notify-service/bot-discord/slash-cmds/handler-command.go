@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/xpo-nential/notify-service/servers/discord-bot/handlers"
+	"github.com/xpo-nential/notify-service/notify-service/bot-discord/handlers"
 )
 
 // HandleCommands เป็นเมธอดที่กำหนด handler ของคำสั่งแบบ Slash Command ตามชื่อแอปพลิเคชัน

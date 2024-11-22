@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/xpo-nential/notify-service/servers/discord-bot/commands"
+	"github.com/xpo-nential/notify-service/notify-service/bot-discord/commands"
 )
 
 // RegisterCommand ลงทะเบียนคำสั่ง ApplicationCommand ตามตัวแปรสภาพแวดล้อม APP_NAME

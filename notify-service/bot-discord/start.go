@@ -1,4 +1,4 @@
-package discordbot
+package botdiscord
 
 import (
 	"flag"
@@ -9,7 +9,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/xpo-nential/notify-service/configs"
-	"github.com/xpo-nential/notify-service/servers/discord-bot/commands"
+	"github.com/xpo-nential/notify-service/notify-service/bot-discord/commands"
 )
 
 // กำหนดตัวแปร Bot

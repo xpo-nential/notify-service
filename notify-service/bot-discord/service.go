@@ -1,4 +1,4 @@
-package discordbot
+package botdiscord
 
 import (
 	"fmt"
@@ -47,13 +47,13 @@ type discordService struct {
 	s *discordgo.Session
 }
 
-var DiscordService IDiscordService
+var service IDiscordService
 
 func newService(s *discordgo.Session) IDiscordService {
-	DiscordService = &discordService{
+	service = &discordService{
 		s: s,
 	}
-	return DiscordService
+	return service
 }
 
 func (dc *discordService) GetAllChannels(t discordgo.ChannelType) ([]map[string]interface{}, error) {

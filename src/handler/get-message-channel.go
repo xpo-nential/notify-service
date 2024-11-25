@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func XGetMessageChannel(c *gin.Context) {
+func GetMessageChannel(c *gin.Context) {
 	query := c.DefaultQuery(`query`, `GuildText`)
 	// idType := botdiscord.TypeChannal[query]
 

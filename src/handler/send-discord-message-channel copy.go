@@ -13,7 +13,7 @@ type _SEND_DISCORD_MESSAGE struct {
 	Message   string `json:"message"`
 }
 
-func XSendDiscordMessageChannel(c *gin.Context) {
+func SendDiscordMessageChannel(c *gin.Context) {
 
 	var dto _SEND_DISCORD_MESSAGE
 

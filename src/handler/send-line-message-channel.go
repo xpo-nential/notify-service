@@ -17,7 +17,7 @@ type _SEND_LINE_MESSAGE struct {
 	Template  map[string]interface{} `json:"template"`
 }
 
-func XSendLineMessageChannel(c *gin.Context) {
+func SendLineMessageChannel(c *gin.Context) {
 
 	var dto _SEND_LINE_MESSAGE
 

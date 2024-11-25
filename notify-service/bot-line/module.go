@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/line/line-bot-sdk-go/linebot"
-	"github.com/xpo-nential/notify-service/configs"
+	"github.com/xpo-nential/notify-service/config"
 )
 
 type IBotLine interface {
@@ -19,7 +19,7 @@ type botline struct {
 var lineBot botline
 
 func newLineBot() {
-	cfg := configs.NewConfig(configs.LineBot).App()
+	cfg := config.NewConfig(config.LineBot).App()
 	bot, err := linebot.New(cfg.GetSecret(), cfg.GetToken())
 	if err != nil {
 		log.Fatal(err.Error())

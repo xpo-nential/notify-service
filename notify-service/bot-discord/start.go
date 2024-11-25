@@ -8,7 +8,7 @@ import (
 	"os/signal"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/xpo-nential/notify-service/configs"
+	"github.com/xpo-nential/notify-service/config"
 	"github.com/xpo-nential/notify-service/notify-service/bot-discord/commands"
 )
 
@@ -34,7 +34,7 @@ type discordServer struct {
 // NewConnection สร้างการเชื่อมต่อใหม่กับ Discord โดยใช้ token ที่กำหนด
 func newConnection() IDiscordServer {
 	// ดึง token จากการตั้งค่า
-	token := configs.NewConfig(configs.DiscordBot).App().GetToken()
+	token := config.NewConfig(config.DiscordBot).App().GetToken()
 	// สร้าง session ของ Discord ด้วย token ที่กำหนด
 	session, err := discordgo.New("Bot " + token)
 	if err != nil {

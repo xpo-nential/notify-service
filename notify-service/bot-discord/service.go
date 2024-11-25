@@ -38,22 +38,17 @@ var TypeChannal = map[string]discordgo.ChannelType{
 	`GuildMedia`:         GuildMedia,
 }
 
-type IDiscordService interface {
-	GetAllChannels(t discordgo.ChannelType) ([]map[string]interface{}, error)
-	ChannelMessageSend(channel, message string, options ...discordgo.RequestOption) (*discordgo.Message, error)
-}
-
 type discordService struct {
 	s *discordgo.Session
 }
 
-var service IDiscordService
+var service discordService
 
-func newService(s *discordgo.Session) IDiscordService {
-	service = &discordService{
+func newService(s *discordgo.Session) *discordService {
+	service = discordService{
 		s: s,
 	}
-	return service
+	return &service
 }
 
 func (dc *discordService) GetAllChannels(t discordgo.ChannelType) ([]map[string]interface{}, error) {

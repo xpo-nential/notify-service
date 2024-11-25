@@ -3,7 +3,7 @@ package refinn
 import "github.com/bwmarrin/discordgo"
 
 // GetHandler คืนค่า map ของ handler สำหรับคำสั่ง refinn
-func (r *refinn) GetHandler() map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate) {
+func (r *Refinn) GetHandler() map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	return r.handler
 }
 

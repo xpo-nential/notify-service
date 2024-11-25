@@ -3,7 +3,7 @@ package refinn
 import "github.com/bwmarrin/discordgo"
 
 // GetCommand คืนค่ารายการคำสั่ง ApplicationCommand สำหรับ refinn
-func (v *refinn) GetCommand() []*discordgo.ApplicationCommand {
+func (v *Refinn) GetCommand() []*discordgo.ApplicationCommand {
 	return v.command
 }
 

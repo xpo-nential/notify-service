@@ -20,11 +20,6 @@ var (
 	RemoveCommands = flag.Bool("rmcmd", true, "Remove all commands after shutdowning or not")
 )
 
-// IDiscordServer กำหนด interface ที่มีเมธอด Start สำหรับเริ่มการทำงานของบอท
-type IDiscordServer interface {
-	Start(handler func(s *discordgo.Session))
-}
-
 // discordServer struct เก็บข้อมูลเกี่ยวกับ session ของบอทและคำสั่งที่ใช้
 type discordServer struct {
 	session  *discordgo.Session
@@ -32,7 +27,7 @@ type discordServer struct {
 }
 
 // NewConnection สร้างการเชื่อมต่อใหม่กับ Discord โดยใช้ token ที่กำหนด
-func newConnection() IDiscordServer {
+func newConnection() *discordServer {
 	// ดึง token จากการตั้งค่า
 	token := config.NewConfig(config.DiscordBot).App().GetToken()
 	// สร้าง session ของ Discord ด้วย token ที่กำหนด

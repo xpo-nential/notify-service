@@ -6,7 +6,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func (v *vannila) GetHandler() map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate) {
+func (v *Vannila) GetHandler() map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	return v.handler
 }
 

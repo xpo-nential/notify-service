@@ -2,7 +2,7 @@ package vannila
 
 import "github.com/bwmarrin/discordgo"
 
-func (v *vannila) GetCommand() []*discordgo.ApplicationCommand {
+func (v *Vannila) GetCommand() []*discordgo.ApplicationCommand {
 	return v.command
 }
 

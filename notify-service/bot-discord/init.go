@@ -2,7 +2,7 @@ package botdiscord
 
 import (
 	"github.com/bwmarrin/discordgo"
-	slashcmds "github.com/xpo-nential/notify-service/notify-service/bot-discord/slash-cmds"
+	slashcmds "github.com/xpo-nential/notify-service/notify-service/bot-discord/slashcmd"
 )
 
 func Init() {

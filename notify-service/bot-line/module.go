@@ -7,11 +7,6 @@ import (
 	"github.com/xpo-nential/notify-service/config"
 )
 
-type IBotLine interface {
-	BubbleMessage(target string, msg string, alt string) error
-	TextMessage(target string, msg string) error
-}
-
 type botline struct {
 	client *linebot.Client
 }

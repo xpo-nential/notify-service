@@ -11,7 +11,7 @@ var (
 	LineBot    BotConfig = `line`
 )
 
-func NewConfig(b BotConfig) IConfig {
+func NewConfig(b BotConfig) *config {
 	switch b {
 	case DiscordBot:
 		return &config{
